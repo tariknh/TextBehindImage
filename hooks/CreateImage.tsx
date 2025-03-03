@@ -31,7 +31,7 @@ export default function CreateFinishedImage({
   //main image is background
   //bgImage
   const {
-    fontSize = "90",
+    fontSize = "120",
     fillStyle = "white",
     textX = 0,
     textY = -5,
@@ -79,13 +79,14 @@ export default function CreateFinishedImage({
 
   // Now `canvas` has the final composited image
   return (
-    <div className="min-h-[300px] h-80 w-[80%] p-4 border border-border rounded-lg relative overflow-hidden flex">
+    <div className="min-h-[300px] h-full w-[80%] p-4   rounded-lg relative overflow-hidden flex">
       <NextImage
         src={mainImage}
         alt="background"
         fill
         objectFit="contain"
         objectPosition="center"
+        className=" rounded-lg"
       />
 
       <div
@@ -111,7 +112,7 @@ export default function CreateFinishedImage({
         }}
         className="z-10  w-full"
       >
-        Mahad
+        {text ? text : "Mahad"}
       </div>
 
       <NextImage
@@ -119,7 +120,7 @@ export default function CreateFinishedImage({
         alt="background"
         fill
         objectFit="contain"
-        className="!absolute z-20  w-full min-h-full"
+        className="!absolute z-20  w-full min-h-full rounded-lg overflow-hidden"
         objectPosition="center"
       />
     </div>

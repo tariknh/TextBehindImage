@@ -33,7 +33,7 @@ const FileSvgDraw = () => {
 
 type FileUploadTypes = {
   value: File[] | null;
-  onValueChange: Dispatch<SetStateAction<File[] | null>>;
+  onValueChange: Dispatch<SetStateAction<File[]>>;
 };
 
 const FileUploadDropzone = ({ value, onValueChange }: FileUploadTypes) => {

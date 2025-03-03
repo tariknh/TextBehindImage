@@ -4,11 +4,13 @@ import { TextBehindPhoto } from "@/components/custom/imageupload";
 import FileUploadDropzone from "@/components/FileUpload";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { useState } from "react";
 
 export default function Page() {
   const [files, setFiles] = useState<File[]>([]);
+  const [text, setText] = useState<string>("");
 
   return (
     <div className="[--header-height:calc(theme(spacing.14))]">
@@ -37,7 +39,7 @@ export default function Page() {
                     </Button>
                   </div>
                 </div>
-                <div className="col-span-2 row-span-2 h-full  rounded-xl bg-transparent ">
+                <div className="col-span-2 row-span-2 h-full  rounded-xl  ">
                   {/* {files?.map((file, i) => (
                     <Image
                       src={URL.createObjectURL(file)}
@@ -48,9 +50,17 @@ export default function Page() {
                       key={i}
                     />
                   ))} */}
-                  {files?.length > 0 && <TextBehindPhoto file={files} />}
+                  {files?.length > 0 && (
+                    <TextBehindPhoto text={text} file={files} />
+                  )}
                 </div>
-                <div className="p-4 rounded-xl row-start-3   bg-muted/50"></div>
+                <div className="p-4 rounded-xl row-start-3   bg-muted/50">
+                  <Input
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    className="bg-background"
+                  />
+                </div>
                 <div className=" rounded-xl row-start-3  bg-muted/50" />
                 <div className=" rounded-xl row-start-3  bg-muted/50" />
               </div>

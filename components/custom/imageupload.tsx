@@ -8,9 +8,10 @@ type imagesrc = ImageData | ArrayBuffer | Uint8Array | Blob | URL | string;
 
 type TextBehindPhotoTypes = {
   file: File[] | null;
+  text: string;
 };
 
-export function TextBehindPhoto({ file }: TextBehindPhotoTypes) {
+export function TextBehindPhoto({ file, text }: TextBehindPhotoTypes) {
   const [preview, setPreview] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [noBackgroundUrl, setNoBackgroundUrl] = useState<string>("");
@@ -69,7 +70,7 @@ export function TextBehindPhoto({ file }: TextBehindPhotoTypes) {
   // };
 
   return (
-    <div className="grid self-center w-full max-w-xl gap-4">
+    <div className="h-full gap-4 overflow-hidden">
       {/* <Label htmlFor="picture">Picture</Label>
       <Input
         id="picture"
@@ -81,7 +82,7 @@ export function TextBehindPhoto({ file }: TextBehindPhotoTypes) {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className="mt-4 flex flex-col h-80">
+        <div className="mt-4 flex flex-col  h-full">
           {/* <Image
             src={preview || "/placeholder.svg"}
             alt="Preview"
@@ -92,7 +93,7 @@ export function TextBehindPhoto({ file }: TextBehindPhotoTypes) {
           {withBackgroundUrl && noBackgroundUrl ? (
             <CreateFinishedImage
               mainImage={withBackgroundUrl}
-              text={""}
+              text={text}
               fgImgUrl={noBackgroundUrl}
             />
           ) : (
